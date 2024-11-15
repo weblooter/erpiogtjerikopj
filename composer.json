@@ -1,0 +1,33 @@
+{
+    "require": {
+        "elasticsearch/elasticsearch": "^8.2",
+        "andreyryabin/sprint.migration": "4.1.1",
+        "php-amqplib/php-amqplib": "^3.3",
+        "monolog/monolog": "^2.8",
+        "symfony/dotenv": "^5.4"
+    },
+    "extra": {
+        "installer-paths": {
+            "app/local/modules/{$name}": [
+                "type:bitrix-module",
+                "type:bitrix-d7-module"
+            ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "php-http/discovery": true
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.4",
+        "codeception/codeception": "^4.2",
+        "codeception/module-phpbrowser": "^2.0",
+        "codeception/module-asserts": "^2.0",
+        "codeception/module-sequence": "^2.0",
+        "codeception/module-rest": "^2.0",
+        "codeception/module-db": "^2.0",
+        "osteel/openapi-httpfoundation-testing": "^0.7.2"
+    }
+}

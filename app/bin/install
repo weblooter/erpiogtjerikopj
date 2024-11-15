@@ -1,0 +1,39 @@
+#!/usr/bin/env php
+<?php
+
+if (php_sapi_name() !== 'cli') {
+    die('You must run this script in CLI');
+}
+
+use Bitrix\Main\ModuleManager;
+
+const NO_AGENT_CHECK        = true;
+const NO_KEEP_STATISTIC     = true;
+const NOT_CHECK_PERMISSIONS = true;
+
+$_SERVER['DOCUMENT_ROOT'] = '/data';
+
+require $_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php';
+
+$modules = [
+    'sprint.migration',
+    'mindbox.marketing',
+    'demoapp.api'
+];
+
+foreach ($modules as $module) {
+
+    $installer = sprintf('%s/local/modules/%s/install/index.php', $_SERVER['DOCUMENT_ROOT'], $module);
+
+    if (file_exists($installer) && !ModuleManager::isModuleInstalled($module)) {
+        $object = CModule::CreateModuleObject($module);
+        $object->DoInstall();
+
+        if (ModuleManager::isModuleInstalled($module)) {
+            echo sprintf('Module %s installed%s', $module, PHP_EOL);
+        }
+    } else {
+        echo sprintf('Module %s already installed%s', $module, PHP_EOL);
+    }
+
+}

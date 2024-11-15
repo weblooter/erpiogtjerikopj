@@ -1,0 +1,31 @@
+{
+    "name": "userstory/naturasiberica.api",
+    "description": "Slim wrapper for Bitrix framework",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "USERSTORY"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "composer/installers": "~1",
+        "slim/slim": "^4.10",
+        "slim/psr7": "^1.5",
+        "psr/log": "^1.1.4",
+        "spatie/data-transfer-object": "^2.8",
+        "phpoffice/phpspreadsheet": "^1.28",
+        "google/recaptcha": "^1.2"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "autoload": {
+        "files": [
+            "include/event_handlers.php"
+        ]
+    }
+}

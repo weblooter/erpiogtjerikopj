@@ -1,0 +1,31 @@
+<?php
+
+namespace NaturaSiberica\Api\Interfaces\Services;
+
+interface TokenServiceInterface
+{
+    const TOKEN_ALGORITHM_HS256 = 'HS256';
+
+    const ERROR_MESSAGE_EXPIRED_TOKEN = 'Expired token';
+    const ERROR_MESSAGE_SIGNATURE_VERIFICATION_FAILED = 'Signature verification failed';
+
+    const DEFAULT_DATETIME_FORMAT = 'd-m-Y H:i:s';
+    const DEFAULT_DATE_FORMAT = 'd.m.Y';
+
+    const REQUIRED_COUNT_OF_EXPLODED_TOKEN = 2;
+
+    /**
+     * @param string|array $authHeader
+     */
+    public function generate($authHeader);
+
+    /**
+     * @param int $fuserId ID покупателя
+     * @param int $userId ID пользователя
+     *
+     * @return mixed
+     */
+    public function regenerate(int $fuserId, int $userId);
+
+    public function validate(string $token, string $type): bool;
+}

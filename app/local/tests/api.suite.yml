@@ -1,0 +1,16 @@
+actor: ApiTester
+modules:
+  enabled:
+    - \tests\Helper\Api
+    - Sequence
+    - PhpBrowser
+    - REST
+    - Db
+    - Asserts
+  config:
+    PhpBrowser:
+      url: http://natura-siberica.local/
+      timeout: 70
+    REST:
+      depends: PhpBrowser
+      url: http://natura-siberica.local/
